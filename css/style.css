@@ -545,14 +545,20 @@ color: #2E2F42;
 }
 
 .backdrop {
+    opacity: 0;
     position: fixed;
+    visibility: hidden;
+    pointer-events: none;
     top: 0;
     left: 0;
     z-index: 99999999;
     width: 100%;
     height: 100%;
     background-color: var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.40));
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+
 
 .modal {
     position: absolute;
@@ -565,9 +571,9 @@ color: #2E2F42;
     border-radius: 4px;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     background-color: var(--DAIRY, #FCFCFC);
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1)
 }
-
+ 
 
 
 .modal-box {
@@ -612,15 +618,6 @@ color: #2E2F42;
   position: relative;
 }
 
-.modal-box-comment {
-    display: block;
-    margin-bottom: 4px;
-    font-size: 12px;
-    color: var(--LIGHT-SLATE, #8E8F99);
-    line-height: 1.17;
-    /* 116.667% */
-    letter-spacing: 0.48px;
-}
 
 .modal-textarea {
     border: 1px solid var(--NAVY-BLUE-modal, rgba(46, 47, 66, 0.40));
@@ -633,7 +630,7 @@ color: #2E2F42;
     font-size: 12px;
     outline: transparent;
     font-weight: 400;
-    line-height: 14px; /* 116.667% */
+    line-height: 1.17; /* 116.667% */
     letter-spacing: 0.48px;
     padding: 8px 16px;
     resize: none;
@@ -762,7 +759,7 @@ color: #2E2F42;
 
 .send-button-modal {
     color: #FFFFFF;
-    font-family: Roboto;
+    font-family: 'Roboto', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -791,16 +788,18 @@ color: #2E2F42;
     border: none;
 }
 
-.form-footer {
-    display: flex;
+.footer-subscribe {
     margin-left: 80px;
-    
 }
 
-.label-footer {}
+.form-footer {
+    display: flex;
+    gap: 24px;
+}
+
+
 
 .paragraph-form-footer {
-    margin-left: 80px;
     font-family: Roboto;
     font-size: 16px;
     font-style: normal;
@@ -813,21 +812,28 @@ color: #2E2F42;
 .input-footer {
     width: 264px;
     height: 40px;
-    padding: 16px 8px;
+    padding-left: 16px;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
     background-color: transparent;
     border-radius: 4px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
     border: 1px solid var(--WHITE, #FFF);
+    color: #FFFFFF;
 }
-    
+  
+.input-footer:placeholder {
+    color: #FFFFFF;
+}
+
 .button-submit {
     display: inline-flex;
     padding: 8px 24px;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    margin-left: 24px;
-    width: 165px;
+    min-width: 165px;
     height: 40px;
     background-color: #4D5AE5;
     border-radius: 4px;
@@ -840,6 +846,10 @@ color: #2E2F42;
     letter-spacing: 0.64px;
     color: #FFF;
     transition: background-color 250ms cubic-bezier(0.4,0,0.2,1);
+}
+
+.telegram-icon {
+    margin-left: 16px;
 }
 
 .button-submit:hover {
